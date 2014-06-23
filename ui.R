@@ -6,6 +6,7 @@
 #
 
 library(shiny)
+library(randomForest)
 shinyUI(
     pageWithSidebar(
         # Application title
@@ -17,6 +18,16 @@ shinyUI(
             HTML('<hr>'),
             actionButton('go', "Analyze"),
             HTML('<hr>'),
+            HTML('<p>Use the slider below to increase the spread of observations in a cluster.</p>'),
+            HTML('<hr>'),
+            sliderInput('jitter', 
+                        'Spread',
+                        value = 200,
+                        min = 100,
+                        max = 1000,
+                        step = 50),
+            HTML('<hr>'),
+            HTML('<hr>'),
             HTML('<p>Use the slider below to choose the number of clusters. The cluster with cross mark is the one where you are present.</p>'),
             HTML('<hr>'),
             sliderInput('clusters', 
@@ -26,7 +37,7 @@ shinyUI(
                         max = 5,
                         step = 1),
             HTML('<hr>'),
-            HTML('Select a cluster whose members you want to view. To view your closest friends select the cluster mentioned below in summary section.'),
+            HTML('Select a cluster whose members you want to view. To view your closest friends select the cluster mentioned below in summary section. Friends are ordered in decreasing order of distance, i.e. friends listed on top of the table are closer to you.'),
             HTML('<hr>'),
             selectInput("dataset", "Choose a cluster:", 
                         choices = paste('Cluster',c(1:5), sep="")),
@@ -59,7 +70,8 @@ shinyUI(
             tableOutput("clusterData"),
             h3('Summary'),
             textOutput("summary"),
-            p("Please send your suggestions to sushanta.pradhan@gmail.com")
+            p(HTML("<br>")),
+            HTML('<p>Keep a watch on this space, clustering of facebook friends based on other factors such as seasonality, interests and other activities on facebook will be added in near future. If you have any suggestions, please email them to <b>sushanta.pradhan@gmail.com</b></p>. ')
         )
     )
 )

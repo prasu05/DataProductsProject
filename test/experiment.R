@@ -3,7 +3,6 @@ library(caret)
 source('src/api/status.R')
 source('src/app/services.R')
 source('src/utils/utils.R')
-token <- 'CAACEdEose0cBAPGOxKRD2tlSePAySGlvOch2YuDDC9lhUPzzAtvC5uZCQoUN8EA7oKkA4wYrlLjQvOr1nPUadmBSt0ZC4gazB1nZBIqDVG6YI1FHBshl2ZCV1fmOnCjcZARc7eYl9BTAzqZAaKUMGIZAT36lDYphuIV3WYHMIXg275QXFK9VN0dRoLyJ6ta4pYZD'
 
 likeData <- getStatuses(token, c('likes'))
 likeData <- likeData[likeData$user_id != '-1',]
@@ -81,14 +80,15 @@ meta[c3Index, ]
 meta[c4Index, ]
 
 
-user_id <- '100001066687353'
-access_token <- 'CAACEdEose0cBAPAWHBHFcgGcpMZAhojZBnQWypbreMS5miwpLamp6qTFUNjGSpYZBoZB4BduMWYWfftxKYflKOLgVndgoA6NBBoymcPX3ETZATMlUMstevzUOQVQTk6iNUGSipJ0kaau8RZBf4jxMUkZAwgo0CiIKPORtIDTVhTSGG6ZAbEGCyC4aybYCogF23sZD'
+user_id <- '1786663222'
+access_token <- 'CAACEdEose0cBAKbAbiAVE42mLJ0GpJ2CC7ZCbQlZABJ0MguKGKaE4bCZBTeAfHWu3sZBgnmhI6Cv5bAGZAhlx1WaUZBLjPwsLZC3mlsGALiyV7ZB6CduBCx7KbG1Uy8T8y77Kd5kXLhn98ZBUDZBHMZBtZBOGnlxjXbhQ4BrR9tMQiNephaYj4ZAYU5aqO63ZA3oJFRvwZD'
 
 rawData <- getStatusesData(user_id, access_token)
 write.csv(rawData, 'sush.csv')
 df <- read.csv('sush.csv')[,-1]
 save(rawData,file="sush.rda")
 meta <- preProcessStatusData(rawData, user_id)
+save(meta,file="meta.rda")
 lico <- meta[,c(3,4)]
 rfModel <- randomForest(comment_count ~ like_count,
                         proximity = TRUE,
