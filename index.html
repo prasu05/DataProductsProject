@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Facebook Freinds Cluster</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Facebook Freinds Cluster">
+  <meta name="author" content="Sushanta Pradhan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Facebook Freinds Cluster</h1>
+    <h2>data products shiny app pitch</h2>
+    <p>Sushanta Pradhan<br/>Software Engineer</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Concept</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Analyze user engagements with his friends.</li>
+<li>Assumption: closer friends will engage most with the user.</li>
+<li>Quantify every friend it terms of &#39;like_count&#39; and &#39;comment_count&#39; on user&#39;s status messages.</li>
+<li>Map each user to 2-dimensional space.</li>
+<li>Visualize the proximity of these points (facebook users).</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Features</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Provide access token to his facebook account for clustering of his friends.</li>
+<li>Visualize his friends in lying in different clusters.</li>
+<li>Select the number of clusters he want&#39;s his friends to be grouped into.</li>
+<li>View the list of friends that belong to a particular cluster.</li>
+<li>Configure the number of friends to viewed in the cluster.</li>
+<li>View the cluster to which you belong to.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Algorithm</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>User&#39;s status data is collected using facebook graph API.</li>
+<li>Likes, comments and the friend who has liked or commented is fetched.</li>
+<li>Raw data is then aggregated so as to find the total like count and comment count by every friend of the user as well the user himself.</li>
+<li>The aggregated data is then modelled using a random forest.</li>
+<li>Random Forest&#39;s proximity matrix is used to detect the closeness of users.</li>
+<li>The proximity matrix is fed to k-means algorithm to return the required clusters.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example cluster of a Facebook user</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">    plot(rfd, col=km$cluster, xlab = &#39;commentIndex&#39;, ylab = &#39;likeIndex&#39;)
+    text(rfd[userIndex,1], rfd[userIndex,2], label=&#39;X&#39;, cex=3, col = 624)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Concept'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Features'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Algorithm'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example cluster of a Facebook user'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

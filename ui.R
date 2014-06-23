@@ -22,7 +22,7 @@ shinyUI(
             HTML('<hr>'),
             sliderInput('jitter', 
                         'Spread',
-                        value = 200,
+                        value = 500,
                         min = 100,
                         max = 1000,
                         step = 50),
@@ -49,6 +49,7 @@ shinyUI(
             p("This application analyses the user's interaction with her friends through her facebook statuses and clusters the user and her closest friends together. The interaction is quantified as the number of likes and comments she is able to garner on her statuses from her friends."),
             p("The application assumes that the user's closest friends will like and comment on the user's statuses more often than others. And hence groups the user and her closest frineds together."),
             p("To find your closest buddies, provide your facebook user-id and an access token for the application to pull your statuses from facebook."),
+            HTML("<p>The default analysis is done on <b>Sushanta Pradhan's</b> facebook statuses.</p>"),
             p("Follow the steps below to fetch your facebook id and access token:"),
             p(HTML('<ul>
                         <li>Go to Facebook <a href="https://developers.facebook.com/tools/explorer/" target="_blank">Graph API Explorer</a>.</li>
