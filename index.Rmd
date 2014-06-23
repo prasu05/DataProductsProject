@@ -44,12 +44,8 @@ mode        : selfcontained # {standalone, draft}
 ```{r echo=FALSE, cache=TRUE}
     a <- library(randomForest)
     b <- library(caret)
-    j <- library(manipulate)
-    c <- source('src/api/status.R')
-    d <- source('src/app/services.R')
-    e <- source('src/utils/utils.R')
 ```
-```{r echo=FALSE}
+```{r cache=TRUE, echo=FALSE}
     load('meta.rda')
     lico <- meta[,c(3,4)]
     rfModel <- randomForest(comment_count ~ like_count,
@@ -61,7 +57,7 @@ mode        : selfcontained # {standalone, draft}
     
 
 ```
-```{r cache=TRUE}
+```{r }
     plot(rfd, col=km$cluster, xlab = 'commentIndex', ylab = 'likeIndex')
     text(rfd[userIndex,1], rfd[userIndex,2], label='X', cex=3, col = 624)
 ```

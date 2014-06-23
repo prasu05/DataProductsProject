@@ -47,7 +47,7 @@ shinyUI(
         mainPanel(
             
             p("This application analyses the user's interaction with her friends through her facebook statuses and clusters the user and her closest friends together. The interaction is quantified as the number of likes and comments she is able to garner on her statuses from her friends."),
-            p("The application assumes that the user's closest friends will like and comment on the user's statuses more often than others. And hence groups the user and her closest frineds together."),
+            p("The application assumes that the user's closest friends will like and comment on the user's statuses more often than others. And hence groups the user and her closest friends together."),
             p("To find your closest buddies, provide your facebook user-id and an access token for the application to pull your statuses from facebook."),
             HTML("<p>The default analysis is done on <b>Sushanta Pradhan's</b> facebook statuses.</p>"),
             p("Follow the steps below to fetch your facebook id and access token:"),
@@ -61,7 +61,10 @@ shinyUI(
                             Hit <b> Submit </b> button to see your facebook account id. Copy and paste it in the <b> user id </b> text box in the left pane.
                         </li>
                         <li>
-                            Finally copy the a big alpha-numeric string from the <b> Acesss Token </b> text box and paste in the <b> acess token </b> text box on the left pane. 
+                            Copy the a big alpha-numeric string from the <b> Acesss Token </b> text box and paste in the <b> acess token </b> text box on the left pane. 
+                        </li>
+                        <li>
+                            Finally hit the <b>Analyze</b> to see the results. Visualize your friend cluster in the below figure. View the details of your friends in the table below the figure. 
                         </li>
                     </ul> ')),
             textOutput("fb_user_id"),
